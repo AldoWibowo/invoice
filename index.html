@@ -78,13 +78,50 @@
                 <td id="grandTotal">Rp 0</td>
             </tr>
         </table>
-        <h2 class="text-xl font-bold mb-2">Payment Detail</h2>
-        <p><strong>Nama Bank:</strong> <input class="border border-gray-300 p-1" type="text" value="Mandiri"/></p>
-        <p><strong>No. Rekening:</strong> <input class="border border-gray-300 p-1" type="text" value="12000-1172-1888"/></p>
-        <p><strong>A/n:</strong> <input class="border border-gray-300 p-1" type="text" value="BASRI"/></p>
-        <p><strong>Nama Bank:</strong> <input class="border border-gray-300 p-1" type="text" value="BCA"/></p>
-        <p><strong>No. Rekening:</strong> <input class="border border-gray-300 p-1" type="text" value="2120-3762-95"/></p>
-        <p><strong>A/n:</strong> <input class="border border-gray-300 p-1" type="text" value="BASRI"/></p>
+        <<h2 class="text-xl font-bold mb-2">Payment Detail</h2>
+
+<div class="space-y-3">
+
+    <div class="grid grid-cols-3 gap-2 items-center">
+        <label class="font-semibold">Nama Bank</label>
+        <input class="col-span-2 border border-gray-300 p-1"
+               type="text" value="Mandiri"/>
+    </div>
+
+    <div class="grid grid-cols-3 gap-2 items-center">
+        <label class="font-semibold">No. Rekening</label>
+        <input class="col-span-2 border border-gray-300 p-1"
+               type="text" value="12000-1172-1888"/>
+    </div>
+
+    <div class="grid grid-cols-3 gap-2 items-center mb-4">
+        <label class="font-semibold">A/n</label>
+        <input class="col-span-2 border border-gray-300 p-1"
+               type="text" value="BASRI"/>
+    </div>
+
+    <hr>
+
+    <div class="grid grid-cols-3 gap-2 items-center">
+        <label class="font-semibold">Nama Bank</label>
+        <input class="col-span-2 border border-gray-300 p-1"
+               type="text" value="BCA"/>
+    </div>
+
+    <div class="grid grid-cols-3 gap-2 items-center">
+        <label class="font-semibold">No. Rekening</label>
+        <input class="col-span-2 border border-gray-300 p-1"
+               type="text" value="2120-3762-95"/>
+    </div>
+
+    <div class="grid grid-cols-3 gap-2 items-center">
+        <label class="font-semibold">A/n</label>
+        <input class="col-span-2 border border-gray-300 p-1"
+               type="text" value="BASRI"/>
+    </div>
+
+</div>
+
         <button id="exportButton" class="bg-green-500 text-white px-4 py-2 mt-4" onclick="exportToPDF()">Export to PDF</button>
     </div>
     <script>
@@ -158,9 +195,6 @@
     </script>
 </body>
 <style>
-    /* =========================
-       FORCE DESKTOP LAYOUT ON PDF / PRINT
-       ========================= */
     @media print {
         body {
             min-width: 1024px !important;
@@ -181,12 +215,10 @@
             font-size: 12px !important;
         }
 
-        /* Prevent Tailwind mobile stacking */
         .flex {
             flex-direction: row !important;
         }
 
-        /* Hide interactive UI when printing */
         button {
             display: none !important;
         }
