@@ -38,7 +38,7 @@
             <tr>
                 <td class="w-1/2">
                     <p><strong>No:</strong> <input class="border border-gray-300 p-1" type="text" value="INV/151124/AC/11"/></p>
-                    <p><strong>Date:</strong> <input class="border border-gray-300 p-1" type="text" value="15 November 2024"/></p>
+                    <p><strong>Date:</strong> <input class="border border-gray-300 p-1" type="text" id="invoiceDate"/></p>
                     <p><strong>Term:</strong> <input class="border border-gray-300 p-1" type="text" value="Transfer"/></p>
                 </td>
                 <td class="w-1/2">
@@ -186,6 +186,18 @@
                 exportButton.style.display = 'block';
             });
         }
+        document.addEventListener('DOMContentLoaded', function () {
+            const dateInput = document.getElementById('invoiceDate');
+
+            const today = new Date();
+            const options = {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
+            };
+
+            dateInput.value = today.toLocaleDateString('id-ID', options);
+        });
     </script>
 </body>
 <style>
