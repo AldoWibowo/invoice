@@ -66,15 +66,7 @@
         <button id="addRowButton" class="bg-blue-500 text-white px-4 py-2 mb-4" onclick="addRow()">Add Row</button>
         <table class="bordered-table mb-4">
             <tr>
-                <td class="w-3/4 text-right"><strong>Sub Total</strong></td>
-                <td id="subTotal">Rp 0</td>
-            </tr>
-            <tr>
-                <td class="w-3/4 text-right"><strong>DP</strong></td>
-                <td><input class="border border-gray-300 p-1 w-full" type="text" placeholder="Rp . . ." oninput="calculateTotal()"/></td>
-            </tr>
-            <tr>
-                <td class="w-3/4 text-right"><strong>Grand Total</strong></td>
+                <td class="w-3/4 text-right"><strong>Total</strong></td>
                 <td id="grandTotal">Rp 0</td>
             </tr>
         </table>
@@ -155,22 +147,24 @@
         }
 
         function calculateTotal() {
-            const table = document.getElementById('invoiceTable').getElementsByTagName('tbody')[0];
-            let subTotal = 0;
+            const table = document
+                .getElementById('invoiceTable')
+                .getElementsByTagName('tbody')[0];
+
+            let total = 0;
 
             for (let i = 0; i < table.rows.length; i++) {
-                const amount = table.rows[i].cells[4].getElementsByTagName('input')[0].value.replace(/[^0-9]/g, ""); // Hapus format non-numerik
+                const amountInput =
+                    table.rows[i].cells[4].getElementsByTagName('input')[0];
+
+                const amount = amountInput.value.replace(/[^0-9]/g, "");
                 if (amount) {
-                    subTotal += parseFloat(amount);
+                    total += parseFloat(amount);
                 }
             }
 
-            document.getElementById('subTotal').innerText = `Rp ${subTotal.toLocaleString('id-ID')}`;
-
-            const dp = document.querySelector('input[placeholder="Rp . . ."]').value.replace(/[^0-9]/g, ""); // Hapus format non-numerik
-            const grandTotal = subTotal - (dp ? parseFloat(dp) : 0);
-
-            document.getElementById('grandTotal').innerText = `Rp ${grandTotal.toLocaleString('id-ID')}`;
+            document.getElementById('grandTotal').innerText =
+                `Rp ${total.toLocaleString('id-ID')}`;
         }
 
         function exportToPDF() {
