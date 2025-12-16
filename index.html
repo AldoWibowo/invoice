@@ -37,7 +37,7 @@
         <table class="bordered-table mb-4">
             <tr>
                 <td class="w-1/2">
-                    <p><strong>No:</strong> <input class="border border-gray-300 p-1" type="text" value="INV/151124/AC/11"/></p>
+                    <p><strong>No:</strong> <input class="border border-gray-300 p-1" type="text" id="invoiceNumber"/></p>
                     <p><strong>Date:</strong> <input class="border border-gray-300 p-1" type="text" id="invoiceDate"/></p>
                     <p><strong>Term:</strong> <input class="border border-gray-300 p-1" type="text" value="Transfer"/></p>
                 </td>
@@ -187,17 +187,26 @@
             });
         }
         document.addEventListener('DOMContentLoaded', function () {
-            const dateInput = document.getElementById('invoiceDate');
 
+            const dateInput = document.getElementById('invoiceDate');
             const today = new Date();
-            const options = {
+
+            const dateOptions = {
                 day: '2-digit',
                 month: 'long',
                 year: 'numeric'
             };
+            dateInput.value = today.toLocaleDateString('id-ID', dateOptions);
 
-            dateInput.value = today.toLocaleDateString('id-ID', options);
+            const invoiceInput = document.getElementById('invoiceNumber');
+
+            const day = String(today.getDate()).padStart(2, '0');
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const year = String(today.getFullYear()).slice(-2);
+
+            invoiceInput.value = `INV/${day}${month}${year}/AC/${month}`;
         });
+        
     </script>
 </body>
 <style>
