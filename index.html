@@ -157,4 +157,39 @@
         }
     </script>
 </body>
+<style>
+    /* =========================
+       FORCE DESKTOP LAYOUT ON PDF / PRINT
+       ========================= */
+    @media print {
+        body {
+            min-width: 1024px !important;
+        }
+
+        #quotationContent {
+            width: 1024px !important;
+            max-width: 1024px !important;
+            margin: 0 auto !important;
+        }
+
+        table {
+            width: 100% !important;
+            font-size: 12px;
+        }
+
+        input, textarea {
+            font-size: 12px !important;
+        }
+
+        /* Prevent Tailwind mobile stacking */
+        .flex {
+            flex-direction: row !important;
+        }
+
+        /* Hide interactive UI when printing */
+        button {
+            display: none !important;
+        }
+    }
+</style>
 </html>
